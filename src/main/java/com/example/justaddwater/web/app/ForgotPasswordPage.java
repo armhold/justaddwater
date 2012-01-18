@@ -1,5 +1,6 @@
 package com.example.justaddwater.web.app;
 
+import com.example.justaddwater.model.AuthenticationType;
 import com.example.justaddwater.model.DAO;
 import com.example.justaddwater.model.OneTimeLogin;
 import com.example.justaddwater.model.User;
@@ -40,13 +41,13 @@ public class ForgotPasswordPage extends WebPage
     private WebMarkupContainer resetDiv;
     private Form form;
     private Model<String> resetEmailModel = new Model<String>();
-    
+
     @Inject
     DAO dao;
 
     @Inject
     EntityManager em;
-    
+
     @Inject
     UserAction action;
 
@@ -78,14 +79,18 @@ public class ForgotPasswordPage extends WebPage
                 if (user == null)
                 {
                     error("no such account: " + email);
-                    target.add(resetDiv);
+                }
+                else if (user.getAuthenticationType() == AuthenticationType.facebook)
+                {
+                    error("can't reset password on Facebook account");
                 }
                 else
                 {
                     createOneTimePassword(user);
                     action.apply();
-                    target.add(resetDiv);
                 }
+
+                target.add(resetDiv);
             }
 
             @Override
