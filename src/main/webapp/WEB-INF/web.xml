@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<display-name>justaddwater</display-name>
+
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>net.ftlines.blog.cdidemo.cdi.ApplicationLifecycleNotifier</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>wicket.justaddwater</filter-name>
+		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+		<init-param>
+			<param-name>applicationClassName</param-name>
+			<param-value>com.example.justaddwater.web.app.WicketApplication</param-value>
+		</init-param>
+
+	</filter>
+
+	<filter-mapping>
+		<filter-name>wicket.justaddwater</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8">
+    <title>yourapp -- sign up</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+
+<body>
+
+<div wicket:id="header"/>
+
+<div class="container">
+
+    <div class="content">
+
+        <section id="forms">
+            <div class="page-header">
+                <h1>Login to yourapp</h1>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+
+            <div class="row">
+
+                <div class="span10">
+                    <form wicket:id="form">
+                        <fieldset>
+                            <span wicket:id="feedback" style="color: red;">[[ feedback ]]</span>
+
+                            <div class="clearfix">
+                                <label for="xlInput" >Username:</label>
+
+                                <div class="input">
+                                    <input wicket:id="username" class="xlarge" name="xlInput" size="20" type="text"/>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <label for="password">Password:</label>
+
+                                <div class="input">
+                                    <input wicket:id="password" class="xlarge" name="password" size="16" type="password"/>
+                                </div>
+                            </div>
+
+                            <div class="actions">
+                                <input type="submit" class="btn primary" value="Login">&nbsp;
+                            </div>
+                            <br/>
+                            <br/>
+
+                            <div class="clearfix">
+                                <div class="input">
+                                    <h4>Need an account? You <a href="/signup">sign up here</a>.</h4>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="input">
+                                    <h4>Forgot your password? You can <a href="/forgot">reset it here</a>.</h4>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                    </form>
+                </div>
+            </div>
+
+            <br/>
+
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; Your Name 2012</p>
+    </footer>
+
+</div>
+<!-- /container -->
+
+</body>
+</html>

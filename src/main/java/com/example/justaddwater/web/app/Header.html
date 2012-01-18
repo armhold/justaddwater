@@ -1,0 +1,56 @@
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+    <wicket:head>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="/bootstrap-1.4.0.min.css"/>
+        <link rel="stylesheet" href="/style.css"/>
+        <link rel="icon" type="image/png" href="/yourapp.png"/>
+
+    </wicket:head>
+</head>
+
+
+<body>
+
+<wicket:panel>
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <wicket:link>
+                    <a class="brand" href="HomePage.html">Your App</a>
+
+                    <ul class="nav">
+                        <li><a href="HomePage.html">Home</a></li>
+                        <li><a href="AboutPage.html">About</a></li>
+                        <li wicket:id="account-link"><a href="AccountPage.html">Account</a></li>
+                        <li wicket:id="signup-link"><a href="SignupPage.html">Sign Up</a></li>
+                    </ul>
+                </wicket:link>
+
+                <div class="pull-right">
+
+                    <form wicket:id="loginForm" method="POST">
+                        <input wicket:id="username" class="input-small" type="text" placeholder="Username">
+                        <input wicket:id="password" class="input-small" type="password" placeholder="Password">
+                        <button class="btn primary" type="submit">Sign in</button>
+                        &nbsp;
+                        &nbsp;
+                        <span style="color: white;">- or - </span>
+                        &nbsp;
+                        <button wicket:id="loginWithFacebook" class="btn primary" type="submit">Login with Facebook</button>
+                    </form>
+
+                    <form wicket:id="logoutForm">
+                         <span wicket:id="loggedOnAs" class="logged-on-as">user@example.com</span>
+                            &nbsp;
+                         <button wicket:id="logout" class="btn" type="submit">Logout</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</wicket:panel>
+</body>
+</html>

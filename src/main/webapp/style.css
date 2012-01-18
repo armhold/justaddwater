@@ -1,0 +1,225 @@
+/* Override some defaults */
+html, body {
+    background-color: #eee;
+}
+
+body {
+    padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+}
+
+.container > footer p {
+    text-align: center; /* center align it with the container */
+}
+
+#content-page .container {
+    width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+}
+
+.container span em {
+    font-style: normal;
+}
+
+/* The white background content wrapper */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+/* Page header tweaks */
+#content-page .page-header {
+    background-color: #f5f5f5;
+    padding: 20px 20px 10px;
+    margin: -20px -20px 20px;
+}
+
+/* Styles you shouldn't keep as they are for displaying this base example only */
+.content .span10,
+.content .span4 {
+    min-height: 500px;
+}
+
+/* Give a quick and non-cross-browser friendly divider */
+.content .span4 {
+    margin-left: 0;
+    padding-left: 19px;
+    border-left: 1px solid #eee;
+}
+
+.topbar .btn {
+    border: 0;
+}
+
+/* apply style from bootstrap.min.css line 224 to the spans that Wicket generates for links */
+.topbar div>ul span,.nav span{display:block;float:none;padding:10px 10px 11px;line-height:19px;text-decoration:none;}
+
+a:hover, a:active {
+    color : #6493D2;
+}
+
+
+ul.items-container {
+    list-style: none;
+    margin-left: 0;
+}
+
+ul.items-container li.item:hover {
+    border: 1px solid green;
+    background: #dddddd;
+}
+
+
+#filePathLabel {
+    margin: 50px;
+    font-size: 20px;
+}
+
+/* file-upload styling courtesy: http://the-echoplex.net/log/how-to-style-a-html-file-upload-control-using-css-and-javascript */
+
+label.file-upload, .content_full_width a.file-upload  {
+    position: relative;
+}
+
+.file-upload span:hover {
+    cursor: pointer;
+}
+
+/* disable styles from bootstrap.min.css line 112 */
+label.file-upload  {
+    float: inherit;
+}
+
+.file-upload input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 130px                                ;
+    height: 40px;
+
+    /* make font big enough so that hidden input field is tall enough to cover the button */
+    font-size: 30px;
+
+    /* set a background color, and disable opacity to debug placement */
+    /*background-color: red;*/
+
+    /* Loses tab index in webkit if width is set to 0 */
+    opacity: 0;
+    filter: alpha(opacity = 0);
+}
+
+.file-upload strong {
+    font: normal 1.25em arial, sans-serif;
+}
+
+.file-upload-status {
+    margin-left: 10px;
+    vertical-align: middle;
+    padding: 7px 11px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #888;
+    background: #f8f8f8;
+    border: 3px solid #ddd;
+}
+
+
+.upload-form {
+    float: left;
+    width: 250px;
+    height: 300px;
+}
+
+.results_launcher {
+    width: 250px;
+}
+
+.results, .upload, .home {
+    min-height: 400px;
+}
+
+.wicket-mfu-container {
+    margin: 20px auto 20px 50px;
+}
+
+input[type="button"].delete_button , input[type="reset"].delete_button , input[type="submit"].delete_button  {
+    background: transparent url(images/delete.png) center no-repeat;
+    width: 25px;
+    margin-left: 20px;
+    border: 0;
+
+    /* disable styles from bootstrap.min.css line 125*/
+    -webkit-transition: inherit;
+    -moz-transition: inherit;
+    -ms-transition: inherit;
+    -o-transition: inherit;
+    transition: inherit;
+    -webkit-box-shadow: inherit;
+    -moz-box-shadow: inherit;
+    box-shadow: inherit;
+}
+
+
+.image-thumbnail {
+    border: 1px solid black;
+}
+
+
+.image-box {
+    margin: 20px auto 20px auto;
+}
+
+.image-box ul.links {
+    list-style: none;
+    margin-left: 0;
+}
+
+.image-box ul.links li {
+    display: inline;
+}
+
+.image-box ul.links li.last {
+    border-left: 1px solid #999999;
+    padding-left: 5px;
+}
+
+.title-and-tagline {
+    float: left;
+}
+
+select.page-drop-down {
+    float: right;
+}
+
+
+span.logged-on-as {
+    color: #BFBFBF;
+}
+
+.my-callout {
+    border-radius: 3px;
+    background: #F1F4F8;
+    padding: 9px;
+    border: 1px solid rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.my-callout h2 {
+    color: #127AAF;
+}
+
+ul.feedbackPanel li.feedbackPanelERROR {
+    color: red;
+}
+
+ul.feedbackPanel li.feedbackPanelINFO {
+    color: green;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>yourapp - account page</title>
+
+    <meta name="description" content="yourapp">
+    <meta name="author" content="Your Name">
+
+</head>
+
+<body>
+
+<div wicket:id="header"/>
+
+<div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <h1>Account Page</h1>
+        <br/>
+        <br/>
+
+        <p>
+            You are logged in as: <span wicket:id="username"/>
+        </p>
+        <br/>
+        <br/>
+        <br/>
+        <p>
+            Account Type: <span wicket:id="accountType"></span>.
+        </p>
+
+        <div wicket:id="changePassword">
+            <p>
+                Click <a href="/change">here to change your password</a>.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; Your Name 2012</p>
+    </footer>
+
+</div> <!-- /container -->
+
+</body>
+</html>
