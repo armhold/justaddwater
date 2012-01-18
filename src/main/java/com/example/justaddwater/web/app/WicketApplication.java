@@ -34,6 +34,7 @@ public class WicketApplication extends WebApplication
         new CdiConfiguration(manager).configure(this);
 
         mountPage("/signup", SignupPage.class);
+        mountPage("/forgot", ForgotPasswordPage.class);
         mountPage("/login", LoginPage.class);
         mountPage("/loginhandler", LoginFormHandlerPage.class);
         mountPage("/contact", ContactPage.class);
