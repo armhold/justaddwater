@@ -1,6 +1,7 @@
 package com.example.justaddwater.web.app;
 
 import com.example.justaddwater.facebook.FacebookOAuthPage;
+import com.example.justaddwater.model.AuthenticationType;
 import com.example.justaddwater.model.DAO;
 import com.example.justaddwater.model.User;
 import net.ftlines.blog.cdidemo.web.UserAction;
@@ -120,6 +121,7 @@ public class SignupPage extends WebPage
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         user.setPassword(hashed);
         user.setAccountCreationDate(new Date());
+        user.setAuthenticationType(AuthenticationType.local);
 
         em.persist(user);
         action.apply();
