@@ -1,0 +1,10 @@
+*~
+
+# maven build artifacts
+target/**
+
+# Intelij IDEA work dir
+out/**
+
+# Intellij project files
+.idea/**
