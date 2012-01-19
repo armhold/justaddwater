@@ -1,11 +1,13 @@
-This is a Wicket project that makes it easy to support user logins in your webapp.
-You can try it out at [quickstarter.armhold.com](http://quickstarter.armhold.com).
+Just Add Water is am open-source Wicket project that makes it easy to support user logins in your webapp.
 
 It builds on the following projects:
 
  * [Apache Wicket](http://wicket.apache.org)
  * [Wicket-CDI](https://github.com/42Lines/wicket-cdi)
  * [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+
+You can try it out at [quickstarter.armhold.com](http://quickstarter.armhold.com).
+
 
 ### Features
 
@@ -16,7 +18,7 @@ It builds on the following projects:
  * one-time-login support via generated tokens
 
 
-## Installation
+### Installation
 
 You'll first need to build & install wicket-cdi:
 
@@ -28,8 +30,9 @@ Now you can check out Just Add Water:
  * $ git clone git@github.com:armhold/justaddwater.git
 
 If you're using Facebook logins you'll need to first [create your app on Facebook](https://developers.facebook.com/apps).
-(Note that it's helpful during debugging to set your site URL to "localhost:8080" and domain to "localhost"; once
-you've got it working locally you can change these settings to the real values).
+
+Note that it's helpful during debugging to set your site URL to "localhost:8080" and domain to "localhost"; once
+you've got it working locally you can change these settings to the real values.
 
 Once you've done that and generated an App ID and API key, you can add those values to `FacebookOAuthPage.java`.
 
