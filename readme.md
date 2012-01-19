@@ -38,3 +38,10 @@ you've got it working locally you can change these settings to the real values.
 
 Once you've done that and generated an App ID and API key, you can add those values to `FacebookOAuthPage.java`.
 
+In order to support email notifications you'll need to either sign up with [ElasticEmail](http://elasticemail.com) 
+or integrate your own email gateway. I chose ElasticEmail simply because I have other projects that use them,
+their RESTful API is easy to integrate, and they offer 1000 free emails to start.
+
+Add your Elastic Email username and API key to `ElasticEmail.java`.
+
+
