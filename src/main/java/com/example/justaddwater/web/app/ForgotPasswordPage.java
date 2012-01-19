@@ -27,6 +27,10 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
+ * For users who have forgotten their password- create and persist
+ * a token for a one-time-login; email the user a link so that they can
+ * then log in with the token, and change their password.
+ *
  * @author George Armhold armhold@gmail.com
  */
 public class ForgotPasswordPage extends WebPage
@@ -36,7 +40,6 @@ public class ForgotPasswordPage extends WebPage
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ForgotPasswordPage.class);
 
     private RequiredTextField<String> emailField;
-    private FeedbackPanel feedback;
     private WebMarkupContainer successMessage;
     private WebMarkupContainer resetDiv;
     private Form form;
@@ -59,7 +62,7 @@ public class ForgotPasswordPage extends WebPage
         form = new Form("form");
         form.setOutputMarkupId(true);
 
-        feedback = new FeedbackPanel("feedback");
+        FeedbackPanel feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
         form.add(feedback);
 
@@ -115,8 +118,10 @@ public class ForgotPasswordPage extends WebPage
         add(resetDiv);
     }
 
-    // reset the user's password, and email them a link so they can access their account
-    //
+    /**
+     * create and persist a token for a one-time-login, and email them a link
+     * so they can access their account
+     */
     private void createOneTimePassword(User user)
     {
         log.info("createOneTimePassword: " + user.getEmail());
