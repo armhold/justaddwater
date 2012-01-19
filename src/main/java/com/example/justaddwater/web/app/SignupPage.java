@@ -62,7 +62,7 @@ public class SignupPage extends WebPage
         feedback.setOutputMarkupId(true);
         form.add(feedback);
 
-        form.add(new ExternalLink("fbLink", FacebookOAuthPage.getLoginRedirectURL()));
+        form.add(new ExternalLink("fbLink", FacebookOAuthPage.getFacebookLoginUrl()));
 
         usernameField = new RequiredTextField<String>("username", new Model<String>());
         passwordField = new PasswordTextField("password", new Model<String>());

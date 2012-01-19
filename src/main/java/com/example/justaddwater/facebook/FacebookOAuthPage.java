@@ -58,26 +58,32 @@ public class FacebookOAuthPage extends WebPage
     // set this to the list of extended permissions you want
     private static final String[] perms = new String[] { /* "publish_stream", */ "email" };
 
-    public static String getLoginRedirectURL()
+    /**
+     * @return the (Facebook) URL where we send the user for authentication
+     */
+    public static String getFacebookLoginUrl()
     {
         return "https://graph.facebook.com/oauth/authorize?client_id=" +
                 FACEBOOK_APP_ID + "&display=page&redirect_uri=" +
                 pathToFBOAuthPage() + "&scope=" + StringUtil.delimitObjectsToString(",", perms);
     }
 
+    private String getAuthURL(String authCode)
+    {
+        return "https://graph.facebook.com/oauth/access_token?client_id=" +
+                FACEBOOK_APP_ID + "&redirect_uri=" +
+                pathToFBOAuthPage() + "&client_secret=" + FACEBOOK_APP_SECRET + "&code=" + authCode;
+    }
+
+    /**
+     * @return the URL where the user should be directed after successfully authenticating to Facebook, i.e. this page
+     */
     public static String pathToFBOAuthPage()
     {
         RequestCycle rc = RequestCycle.get();
         return rc.getUrlRenderer().renderFullUrl(Url.parse(rc.urlFor(FacebookOAuthPage.class, null).toString()));
     }
                                            
-
-    public static String getAuthURL(String authCode)
-    {
-        return "https://graph.facebook.com/oauth/access_token?client_id=" +
-                FACEBOOK_APP_ID + "&redirect_uri=" +
-                pathToFBOAuthPage() + "&client_secret=" + FACEBOOK_APP_SECRET + "&code=" + authCode;
-    }
 
     public FacebookOAuthPage()
     {

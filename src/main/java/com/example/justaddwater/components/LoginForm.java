@@ -20,7 +20,7 @@ public class LoginForm extends StatelessForm
 
         add(new TextField("username").setRequired(true));
         add(new PasswordTextField("password").setRequired(true));
-        add(new ExternalLink("loginWithFacebook", FacebookOAuthPage.getLoginRedirectURL()));
+        add(new ExternalLink("loginWithFacebook", FacebookOAuthPage.getFacebookLoginUrl()));
     }
 
     @Override
