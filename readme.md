@@ -31,12 +31,16 @@ Now you can check out Just Add Water:
 
  * $ git clone git@github.com:armhold/justaddwater.git
 
+#### Facebook Integration
+
 If you're using Facebook logins you'll need to first [create your app on Facebook](https://developers.facebook.com/apps).
 
-Note that it's helpful during debugging to set your site URL to "localhost:8080" and domain to "localhost"; once
+Note that it's helpful during debugging to set your site URL to `localhost:8080` and domain to `localhost`; once
 you've got it working locally you can change these settings to the real values.
 
 Once you've done that and generated an App ID and API key, you can add those values to `FacebookOAuthPage.java`.
+
+#### Email Integration
 
 In order to support email notifications you'll need to either sign up with [ElasticEmail](http://elasticemail.com) 
 or integrate your own email gateway. I chose ElasticEmail simply because I have other projects that use them,
