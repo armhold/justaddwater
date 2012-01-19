@@ -40,6 +40,7 @@ public class WicketApplication extends WebApplication
         mountPage("/contact", ContactPage.class);
         mountPage("/about", AboutPage.class);
         mountPage("/change", ChangePasswordPage.class);
+        mountPage("/404", Error404Page.class);
         mountPage("/500", Error500Page.class);
         mountPage("/account", AccountPage.class);
         mountPage("/fbauth", FacebookOAuthPage.class);
