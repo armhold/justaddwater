@@ -1,4 +1,6 @@
-Just Add Water is am open-source Wicket project that makes it easy to support user logins in your webapp.
+# Just Add Water
+
+Just Add Water is an open-source Wicket project that makes it easy to support user logins in your webapp.
 
 It builds on the following projects:
 
@@ -15,7 +17,7 @@ You can try it out at [quickstarter.armhold.com](http://quickstarter.armhold.com
  * "login with Facebook" authentication, using Facebook OAuth 2.0
  * "change password" page
  * "forgot my password" page
- * one-time-login support via generated tokens
+ * one-time-login support (with expiration) via generated tokens
 
 
 ### Installation
