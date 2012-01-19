@@ -10,7 +10,6 @@ import com.example.justaddwater.web.app.MySession;
 import com.visural.common.IOUtil;
 import com.visural.common.StringUtil;
 import net.ftlines.blog.cdidemo.web.UserAction;
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -20,7 +19,6 @@ import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -29,6 +27,19 @@ import java.net.URL;
 import java.util.Date;
 
 /**
+ * Most of this code is derived from the following blog post by Richard Nichols:
+ *
+ * http://www.richardnichols.net/2010/06/implementing-facebook-oauth-2-0-authentication-in-java
+ *
+ * Here is the basic flow:
+ *
+ * 1. create "login with facebook" link somewhere in your app using getFacebookLoginUrl()
+ * 2. facebook will authenticate user, and send them back to this page (via pathToFBOAuthPage())
+ * 3. we pull the "code" param out of the request, and send this Facebook for verification via getAuthURL()
+ * 4. parse the response for the access_token
+ * 5. use the access_token to retrieve the user's email (etc) via accessFacebookGraphAPI()
+ * 6. user is now logged in, based on Facebook email address
+ *
  * @author George Armhold armhold@gmail.com
  */
 public class FacebookOAuthPage extends WebPage
@@ -127,7 +138,7 @@ public class FacebookOAuthPage extends WebPage
 
                 if (accessToken != null && expires != null)
                 {
-                    authFacebookLogin(accessToken, expires);
+                    accessFacebookGraphAPI(accessToken, expires);
                     setResponsePage(AccountPage.class);
                 }
                 else
@@ -163,7 +174,7 @@ public class FacebookOAuthPage extends WebPage
         return new String(baos.toByteArray());
     }
 
-    public void authFacebookLogin(String accessToken, int expires)
+    private void accessFacebookGraphAPI(String accessToken, int expires)
     {
         try
         {
