@@ -2,6 +2,10 @@
 
 Just Add Water is an open-source Wicket project that makes it easy to support user logins in your webapp.
 
+If you're starting from scratch you can use this project as a template and build your app around it.
+If you have existing code you can simply use it as an example, or copy the relevant parts into your codebase.
+
+
 It builds on the following projects:
 
  * [Apache Wicket](http://wicket.apache.org)
