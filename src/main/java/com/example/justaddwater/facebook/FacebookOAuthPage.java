@@ -37,8 +37,8 @@ import java.util.Date;
  * 2. facebook will authenticate user, and send them back to this page (via pathToFBOAuthPage())
  * 3. we pull the "code" param out of the request, and send this Facebook for verification via getAuthURL()
  * 4. parse the response for the access_token
- * 5. use the access_token to retrieve the user's email (etc) via accessFacebookGraphAPI()
- * 6. user is now logged in, based on Facebook email address
+ * 5. use the access_token to retrieve the user's email (etc) via getEmailFromFacebookGraphAPI()
+ * 6. set user's email in MySession; user is now logged in
  *
  * @author George Armhold armhold@gmail.com
  */
@@ -138,7 +138,7 @@ public class FacebookOAuthPage extends WebPage
 
                 if (accessToken != null && expires != null)
                 {
-                    accessFacebookGraphAPI(accessToken, expires);
+                    logUserIn(accessToken, expires);
                     setResponsePage(AccountPage.class);
                 }
                 else
@@ -174,18 +174,15 @@ public class FacebookOAuthPage extends WebPage
         return new String(baos.toByteArray());
     }
 
-    private void accessFacebookGraphAPI(String accessToken, int expires)
+    /**
+     * set username in user session to value returned from the Facebook graph api-
+     * this marks the user as being logged in.
+     */
+    private void logUserIn(String accessToken, int expires)
     {
         try
         {
-            JSONObject resp = new JSONObject(IOUtil.urlToString(new URL("https://graph.facebook.com/me?access_token=" + accessToken)));
-            String id = resp.getString("id");
-            String firstName = resp.getString("first_name");
-            String lastName = resp.getString("last_name");
-
-            log.info("firstName: " + firstName + ", lastName: " + lastName);
-
-            String email = resp.getString("email");
+            String email = getEmailFromFacebookGraphAPI(accessToken, expires);
 
             User user = findOrCreateFacebookUser(email);
             session.setUsername(user.getEmail());
@@ -197,6 +194,21 @@ public class FacebookOAuthPage extends WebPage
         }
     }
 
+    private String getEmailFromFacebookGraphAPI(String accessToken, int expires)
+    {
+        try 
+        {
+            JSONObject resp = new JSONObject(IOUtil.urlToString(new URL("https://graph.facebook.com/me?access_token=" + accessToken)));
+
+            // other objects available here are: "id", "first_name", "last_name", etc.
+            return resp.getString("email");
+        }
+        catch (Exception e) 
+        {
+            throw new RuntimeException("erorr getting email address from Facebook", e);
+        }
+    }
+    
 
     private User findOrCreateFacebookUser(String email)
     {
