@@ -19,9 +19,6 @@ import javax.inject.Inject;
 public class Header extends Panel
 {
     @Inject
-    com.example.justaddwater.web.app.LoginUtil loginUtil;
-
-    @Inject
     MySession session;
     
     @Inject
