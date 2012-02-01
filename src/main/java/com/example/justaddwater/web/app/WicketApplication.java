@@ -1,14 +1,32 @@
+/*
+ *  Copyright 2012 George Armhold
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *  under the License.
+ */
 package com.example.justaddwater.web.app;
 
 import com.example.justaddwater.components.LoginFormHandlerPage;
 import com.example.justaddwater.facebook.FacebookOAuthPage;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import net.ftlines.wicket.cdi.CdiContainer;
+import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.authorization.strategies.page.SimplePageAuthorizationStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
 import org.apache.wicket.settings.IApplicationSettings;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.jboss.weld.environment.servlet.Listener;
 
 import javax.enterprise.inject.spi.BeanManager;
@@ -50,7 +68,10 @@ public class WicketApplication extends WebApplication
 
         IApplicationSettings settings = getApplicationSettings();
         settings.setInternalErrorPage(Error500Page.class);
-	}
+
+        // https://cwiki.apache.org/WICKET/error-pages-and-feedback-messages.html
+        getExceptionSettings().setUnexpectedExceptionDisplay(IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+}
 
     // tell wicket to use our RequiresAuthentication marker interface to indicate which
     // pages need authentication
