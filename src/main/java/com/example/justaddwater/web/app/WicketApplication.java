@@ -20,7 +20,6 @@ import com.example.justaddwater.components.LoginFormHandlerPage;
 import com.example.justaddwater.facebook.FacebookOAuthPage;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import net.ftlines.wicket.cdi.CdiContainer;
-import net.ftlines.wicketsource.WicketSource;
 import org.apache.wicket.authorization.strategies.page.SimplePageAuthorizationStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.HttpsConfig;
