@@ -17,7 +17,7 @@ public class TransactionalInterceptor {
 
   @AroundInvoke
   public Object wrapInTransaction(InvocationContext invocation) throws Exception {
-    boolean owner = em.getTransaction().isActive();
+    boolean owner = !em.getTransaction().isActive();
 
     if (owner) {
       em.getTransaction().begin();
